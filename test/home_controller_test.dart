@@ -21,8 +21,32 @@ void main() {
   group('fetchUsers', () {
     final tUserList =
         List.from(
-          json.decode(readJson('dummy_data/list_user.json'))['data'],
+          jsonDecode(readJson('dummy_data/list_user.json'))['data'],
         ).map((e) => UserModel.fromJson(e)).toList();
+
+    test('isLoading should true when call fetchUsers', () async {
+      // Arrange
+      when(
+        mockDio.get(
+          'https://reqres.in/api/users',
+          queryParameters: null,
+          options: anyNamed('options'),
+          cancelToken: null,
+          onReceiveProgress: null,
+        ),
+      ).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
+          statusCode: 200,
+          data: jsonDecode(readJson('dummy_data/list_user.json')),
+        ),
+      );
+      // Act
+      controller.fetchUser();
+      // Assert
+      final result = controller.isLoading;
+      expect(result.value, true);
+    });
 
     test(
       'state should not empty when call data from remote successfully',
@@ -31,13 +55,16 @@ void main() {
         when(
           mockDio.get(
             'https://reqres.in/api/users',
-            options: Options(headers: {'x-api-key': 'reqres-free-v1'}),
+            queryParameters: null,
+            options: anyNamed('options'),
+            cancelToken: null,
+            onReceiveProgress: null,
           ),
         ).thenAnswer(
           (_) async => Response(
-            data: tUserList,
+            requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
             statusCode: 200,
-            requestOptions: RequestOptions(),
+            data: jsonDecode(readJson('dummy_data/list_user.json')),
           ),
         );
         // Act
@@ -47,5 +74,55 @@ void main() {
         expect(result, tUserList);
       },
     );
+
+    test(
+      'state should empty when call data from remote successfully with empty data',
+      () async {
+        // Arrange
+        when(
+          mockDio.get(
+            'https://reqres.in/api/users',
+            queryParameters: null,
+            options: anyNamed('options'),
+            cancelToken: null,
+            onReceiveProgress: null,
+          ),
+        ).thenAnswer(
+          (_) async => Response(
+            requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
+            statusCode: 200,
+            data: jsonDecode("{\"data\":[]}"),
+          ),
+        );
+        // Act
+        await controller.fetchUser();
+        // Assert
+        final result = controller.usersState;
+        expect(result, []);
+      },
+    );
+
+    test('message should not empty when call from remote is failed', () async {
+      // Arrange
+      when(
+        mockDio.get(
+          'https://reqres.in/api/users',
+          queryParameters: null,
+          options: anyNamed('options'),
+          cancelToken: null,
+          onReceiveProgress: null,
+        ),
+      ).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
+          statusCode: 400,
+        ),
+      );
+      // Act
+      await controller.fetchUser();
+      // Assert
+      final result = controller.message;
+      expect(result.value, 'Failed to fetch users');
+    });
   });
 }
