@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_test_case/user_model.dart';
+import 'package:flutter_test_case/models/user_model.dart';
 import 'package:flutter_test_case/utils/asset_loader.dart';
 import 'package:get/get.dart';
 

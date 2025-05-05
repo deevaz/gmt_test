@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_test_case/user_model.dart';
+import 'package:flutter_test_case/models/user_model.dart';
 
-import 'dummy_data/dummy_object.dart';
+import '../dummy_data/dummy_object.dart';
 
 void main() {
   test('should return a valid model from JSON', () async {

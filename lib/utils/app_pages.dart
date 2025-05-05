@@ -1,5 +1,5 @@
-import 'package:flutter_test_case/home_binding.dart';
-import 'package:flutter_test_case/home_page.dart';
+import 'package:flutter_test_case/bindings/home_binding.dart';
+import 'package:flutter_test_case/pages/home_page.dart';
 import 'package:flutter_test_case/utils/app_routes.dart';
 import 'package:get/get.dart';
 

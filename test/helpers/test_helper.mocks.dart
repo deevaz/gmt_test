@@ -6,8 +6,8 @@
 import 'dart:async' as _i5;
 import 'dart:ui' as _i7;
 
-import 'package:flutter_test_case/home_controller.dart' as _i3;
-import 'package:flutter_test_case/user_model.dart' as _i4;
+import 'package:flutter_test_case/controllers/home_controller.dart' as _i3;
+import 'package:flutter_test_case/models/user_model.dart' as _i4;
 import 'package:flutter_test_case/utils/asset_loader.dart' as _i8;
 import 'package:get/get.dart' as _i2;
 import 'package:get/get_state_manager/src/simple/list_notifier.dart' as _i6;

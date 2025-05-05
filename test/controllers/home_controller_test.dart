@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_test_case/home_controller.dart';
-import 'package:flutter_test_case/user_model.dart';
+import 'package:flutter_test_case/controllers/home_controller.dart';
+import 'package:flutter_test_case/models/user_model.dart';
 import 'package:mockito/mockito.dart';
 
-import 'helpers/test_helper.mocks.dart';
-import 'utils/json_reader.dart';
+import '../helpers/test_helper.mocks.dart';
+import '../utils/json_reader.dart';
 
 void main() {
   late final MockAssetLoader mockAssetLoader;

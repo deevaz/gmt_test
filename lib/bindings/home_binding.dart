@@ -1,4 +1,4 @@
-import 'package:flutter_test_case/home_controller.dart';
+import 'package:flutter_test_case/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
 class HomeBinding extends Bindings {

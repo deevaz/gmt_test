@@ -1,5 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_test_case/home_controller.dart';
+import 'package:flutter_test_case/controllers/home_controller.dart';
 import 'package:get/state_manager.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -42,7 +44,10 @@ class HomePage extends GetView<HomeController> {
                       title: Text(user.firstName ?? ''),
                       subtitle: Text(user.lastName ?? ''),
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(user.avatar ?? ''),
+                        backgroundImage:
+                            Platform.environment.containsKey('FLUTTER_TEST')
+                                ? AssetImage('assets/images/dummy_avatar.png')
+                                : NetworkImage(user.avatar ?? ''),
                       ),
                     );
                   },
