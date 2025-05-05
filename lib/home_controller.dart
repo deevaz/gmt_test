@@ -30,10 +30,8 @@ class HomeController extends GetxController {
       final responseJson = response.data['data'] as List;
       final result =
           responseJson.map((user) => UserModel.fromJson(user)).toList();
-      isLoading.value = false;
       usersState.value = result;
     } else {
-      isLoading.value = false;
       message.value = 'Failed to fetch users';
     }
   }

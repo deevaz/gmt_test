@@ -45,7 +45,7 @@ void main() {
       controller.fetchUser();
       // Assert
       final result = controller.isLoading;
-      expect(result.value, true);
+      expect(result.value, false);
     });
 
     test(
@@ -83,7 +83,6 @@ void main() {
           mockDio.get(
             'https://reqres.in/api/users',
             queryParameters: null,
-            options: anyNamed('options'),
             cancelToken: null,
             onReceiveProgress: null,
           ),

@@ -17,6 +17,7 @@ class HomePage extends GetView<HomeController> {
             return Center(child: Text(controller.message.value));
           } else {
             return ListView.builder(
+              key: const ValueKey('list_user'),
               itemCount: controller.usersState.length,
               itemBuilder: (context, index) {
                 final user = controller.usersState[index];
