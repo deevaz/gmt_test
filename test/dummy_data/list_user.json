@@ -1,4 +1,9 @@
 {
+    "meta": {
+        "page": 1,
+        "perPage": 10,
+        "total": 50
+    },
     "data": [
         {
             "id": 1,

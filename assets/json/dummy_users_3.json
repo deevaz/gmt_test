@@ -1,0 +1,79 @@
+{
+    "meta": {
+        "page": 3,
+        "perPage": 10,
+        "totalPage": 5
+    },
+    "data": [
+        {
+            "id": 21,
+            "email": "user21@example.com",
+            "first_name": "Steve",
+            "last_name": "Martin",
+            "avatar": "https://i.pravatar.cc/150?img=21"
+        },
+        {
+            "id": 22,
+            "email": "user22@example.com",
+            "first_name": "Tina",
+            "last_name": "Lee",
+            "avatar": "https://i.pravatar.cc/150?img=22"
+        },
+        {
+            "id": 23,
+            "email": "user23@example.com",
+            "first_name": "Umar",
+            "last_name": "Perez",
+            "avatar": "https://i.pravatar.cc/150?img=23"
+        },
+        {
+            "id": 24,
+            "email": "user24@example.com",
+            "first_name": "Vera",
+            "last_name": "White",
+            "avatar": "https://i.pravatar.cc/150?img=24"
+        },
+        {
+            "id": 25,
+            "email": "user25@example.com",
+            "first_name": "Will",
+            "last_name": "Harris",
+            "avatar": "https://i.pravatar.cc/150?img=25"
+        },
+        {
+            "id": 26,
+            "email": "user26@example.com",
+            "first_name": "Xena",
+            "last_name": "Sanchez",
+            "avatar": "https://i.pravatar.cc/150?img=26"
+        },
+        {
+            "id": 27,
+            "email": "user27@example.com",
+            "first_name": "Yuri",
+            "last_name": "Clark",
+            "avatar": "https://i.pravatar.cc/150?img=27"
+        },
+        {
+            "id": 28,
+            "email": "user28@example.com",
+            "first_name": "Zoe",
+            "last_name": "Ramirez",
+            "avatar": "https://i.pravatar.cc/150?img=28"
+        },
+        {
+            "id": 29,
+            "email": "user29@example.com",
+            "first_name": "Alan",
+            "last_name": "Lewis",
+            "avatar": "https://i.pravatar.cc/150?img=29"
+        },
+        {
+            "id": 30,
+            "email": "user30@example.com",
+            "first_name": "Bella",
+            "last_name": "Robinson",
+            "avatar": "https://i.pravatar.cc/150?img=30"
+        }
+    ]
+}

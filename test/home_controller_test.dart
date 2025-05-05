@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_case/home_controller.dart';
 import 'package:flutter_test_case/user_model.dart';
@@ -10,12 +10,14 @@ import 'helpers/test_helper.mocks.dart';
 import 'utils/json_reader.dart';
 
 void main() {
+  late final MockAssetLoader mockAssetLoader;
   late final HomeController controller;
-  late final MockDio mockDio;
 
   setUp(() {
-    mockDio = MockDio();
-    controller = HomeController(mockDio);
+    TestWidgetsFlutterBinding.ensureInitialized();
+
+    mockAssetLoader = MockAssetLoader();
+    controller = HomeController(mockAssetLoader);
   });
 
   group('fetchUsers', () {
@@ -27,20 +29,8 @@ void main() {
     test('isLoading should true when call fetchUsers', () async {
       // Arrange
       when(
-        mockDio.get(
-          'https://reqres.in/api/users',
-          queryParameters: null,
-          options: anyNamed('options'),
-          cancelToken: null,
-          onReceiveProgress: null,
-        ),
-      ).thenAnswer(
-        (_) async => Response(
-          requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
-          statusCode: 200,
-          data: jsonDecode(readJson('dummy_data/list_user.json')),
-        ),
-      );
+        mockAssetLoader.loadString('assets/json/dummy_users_1.json'),
+      ).thenAnswer((_) async => readJson('dummy_data/list_user.json'));
       // Act
       controller.fetchUser();
       // Assert
@@ -53,20 +43,8 @@ void main() {
       () async {
         // Arrange
         when(
-          mockDio.get(
-            'https://reqres.in/api/users',
-            queryParameters: null,
-            options: anyNamed('options'),
-            cancelToken: null,
-            onReceiveProgress: null,
-          ),
-        ).thenAnswer(
-          (_) async => Response(
-            requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
-            statusCode: 200,
-            data: jsonDecode(readJson('dummy_data/list_user.json')),
-          ),
-        );
+          rootBundle.loadString('assets/json/dummy_users_1.json'),
+        ).thenAnswer((_) async => readJson('dummy_data/list_user.json'));
         // Act
         await controller.fetchUser();
         // Assert
@@ -80,19 +58,8 @@ void main() {
       () async {
         // Arrange
         when(
-          mockDio.get(
-            'https://reqres.in/api/users',
-            queryParameters: null,
-            cancelToken: null,
-            onReceiveProgress: null,
-          ),
-        ).thenAnswer(
-          (_) async => Response(
-            requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
-            statusCode: 200,
-            data: jsonDecode("{\"data\":[]}"),
-          ),
-        );
+          rootBundle.loadString('assets/json/dummy_users_1.json'),
+        ).thenAnswer((_) async => jsonDecode("{\"data\":[]}"));
         // Act
         await controller.fetchUser();
         // Assert
@@ -104,19 +71,8 @@ void main() {
     test('message should not empty when call from remote is failed', () async {
       // Arrange
       when(
-        mockDio.get(
-          'https://reqres.in/api/users',
-          queryParameters: null,
-          options: anyNamed('options'),
-          cancelToken: null,
-          onReceiveProgress: null,
-        ),
-      ).thenAnswer(
-        (_) async => Response(
-          requestOptions: RequestOptions(path: 'https://reqres.in/api/users'),
-          statusCode: 400,
-        ),
-      );
+        mockAssetLoader.loadString('assets/json/dummy_users_1.json'),
+      ).thenAnswer((_) async => '');
       // Act
       await controller.fetchUser();
       // Assert

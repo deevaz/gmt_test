@@ -16,19 +16,38 @@ class HomePage extends GetView<HomeController> {
           } else if (controller.message.value.isNotEmpty) {
             return Center(child: Text(controller.message.value));
           } else {
-            return ListView.builder(
-              key: const ValueKey('list_user'),
-              itemCount: controller.usersState.length,
-              itemBuilder: (context, index) {
-                final user = controller.usersState[index];
-                return ListTile(
-                  title: Text(user.firstName ?? ''),
-                  subtitle: Text(user.lastName ?? ''),
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(user.avatar ?? ''),
-                  ),
-                );
+            final users = controller.usersState;
+            return NotificationListener(
+              onNotification: (notification) {
+                if (notification is ScrollEndNotification &&
+                    notification.metrics.extentAfter == 0) {
+                  controller.fetchUser();
+                }
+                return false;
               },
+              child: RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  controller.fetchUser(refresh: true);
+                },
+                child: ListView.builder(
+                  key: const ValueKey('list_user'),
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    if (index >= users.length && controller.page != null) {
+                      return CircularProgressIndicator.adaptive();
+                    }
+
+                    final user = users[index];
+                    return ListTile(
+                      title: Text(user.firstName ?? ''),
+                      subtitle: Text(user.lastName ?? ''),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(user.avatar ?? ''),
+                      ),
+                    );
+                  },
+                ),
+              ),
             );
           }
         }),

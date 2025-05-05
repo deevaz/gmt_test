@@ -1,0 +1,79 @@
+{
+    "meta": {
+        "page": 4,
+        "perPage": 10,
+        "totalPage": 5
+    },
+    "data": [
+        {
+            "id": 31,
+            "email": "user31@example.com",
+            "first_name": "Cody",
+            "last_name": "Walker",
+            "avatar": "https://i.pravatar.cc/150?img=31"
+        },
+        {
+            "id": 32,
+            "email": "user32@example.com",
+            "first_name": "Diana",
+            "last_name": "Young",
+            "avatar": "https://i.pravatar.cc/150?img=32"
+        },
+        {
+            "id": 33,
+            "email": "user33@example.com",
+            "first_name": "Ethan",
+            "last_name": "Allen",
+            "avatar": "https://i.pravatar.cc/150?img=33"
+        },
+        {
+            "id": 34,
+            "email": "user34@example.com",
+            "first_name": "Fiona",
+            "last_name": "King",
+            "avatar": "https://i.pravatar.cc/150?img=34"
+        },
+        {
+            "id": 35,
+            "email": "user35@example.com",
+            "first_name": "George",
+            "last_name": "Wright",
+            "avatar": "https://i.pravatar.cc/150?img=35"
+        },
+        {
+            "id": 36,
+            "email": "user36@example.com",
+            "first_name": "Hannah",
+            "last_name": "Scott",
+            "avatar": "https://i.pravatar.cc/150?img=36"
+        },
+        {
+            "id": 37,
+            "email": "user37@example.com",
+            "first_name": "Isaac",
+            "last_name": "Torres",
+            "avatar": "https://i.pravatar.cc/150?img=37"
+        },
+        {
+            "id": 38,
+            "email": "user38@example.com",
+            "first_name": "Julia",
+            "last_name": "Nguyen",
+            "avatar": "https://i.pravatar.cc/150?img=38"
+        },
+        {
+            "id": 39,
+            "email": "user39@example.com",
+            "first_name": "Kevin",
+            "last_name": "Hill",
+            "avatar": "https://i.pravatar.cc/150?img=39"
+        },
+        {
+            "id": 40,
+            "email": "user40@example.com",
+            "first_name": "Lily",
+            "last_name": "Flores",
+            "avatar": "https://i.pravatar.cc/150?img=40"
+        }
+    ]
+}
