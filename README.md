@@ -40,7 +40,7 @@ Terdapat **8 bug** yang tersebar di dalam aplikasi. Bug bisa berkaitan dengan:
 - Kesalahan logika pada penerapan pagination data list
 - Kesalahan pada penggunaan state ketika menampilkan data list
 - Error pada saat rendering data atau null value
-- Unit dan widget testing yang tidak berjalan dengan semestinya dan memiliki hasil yang tidak sesuai ekspektasi
+- Unit dan widget testing yang tidak berjalan dengan semestinya dan memiliki hasil yang tidak sesuai ekspektasi (Optional)
 
 > **Catatan:** Daftar bug sudah ditanamkan dalam kode dan perlu ditemukan serta diperbaiki.
 
