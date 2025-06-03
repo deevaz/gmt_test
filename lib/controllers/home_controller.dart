@@ -27,9 +27,7 @@ class HomeController extends GetxController {
 
     if (page == null) return;
 
-    if (page == 1) {
-      isLoading.value = true;
-    }
+    if (page == 1) {}
 
     try {
       final responseStr = await _assetLoader.loadString(

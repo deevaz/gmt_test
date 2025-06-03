@@ -8,7 +8,7 @@ Ini adalah proyek Flutter berskala kecil yang dirancang untuk menguji kemampuan 
 
 ## 🎯 Tujuan
 
-- Memperbaiki **8 bug** yang telah tersebar di dalam project.
+- Memperbaiki **4 bug** yang telah tersebar di dalam project.
 - Menambahkan satu fitur baru berupa **halaman detail user**.
 - Menggunakan **GetX** sebagai state management dan routing.
 
@@ -34,13 +34,12 @@ Ini adalah proyek Flutter berskala kecil yang dirancang untuk menguji kemampuan 
 
 ## 🐞 Bug yang Harus Diperbaiki
 
-Terdapat **8 bug** yang tersebar di dalam aplikasi. Bug bisa berkaitan dengan:
+Terdapat **4 bug** yang tersebar di dalam aplikasi. Bug bisa berkaitan dengan:
 
-- Dependency yang tidak disematkan untuk class yang membutuhkan
+- Kesalahan logika pada saat menampilkan state loading pada halaman home ketika menampilkan data list user
+- Kesalahan ketika merefresh list, tetapi daftar pada list tidak ter-refresh
 - Kesalahan logika pada penerapan pagination data list
-- Kesalahan pada penggunaan state ketika menampilkan data list
 - Error pada saat rendering data atau null value
-- Unit dan widget testing yang tidak berjalan dengan semestinya dan memiliki hasil yang tidak sesuai ekspektasi (Optional)
 
 > **Catatan:** Daftar bug sudah ditanamkan dalam kode dan perlu ditemukan serta diperbaiki.
 
@@ -50,7 +49,7 @@ Terdapat **8 bug** yang tersebar di dalam aplikasi. Bug bisa berkaitan dengan:
 
 | Kriteria           | Deskripsi                                                               |
 | ------------------ | ----------------------------------------------------------------------- |
-| ✅ Bugfix           | Semua 8 bug berhasil diidentifikasi dan diperbaiki                      |
+| ✅ Bugfix           | Semua 4 bug berhasil diidentifikasi dan diperbaiki                      |
 | ✅ Fitur Baru       | Halaman detail user berhasil ditambahkan dan berjalan dengan semestinya |
 | ✅ Navigasi         | Navigasi dari halaman Home ke Detail berjalan dengan lancar             |
 | ✅ GetX             | GetX digunakan untuk state dan routing                                  |

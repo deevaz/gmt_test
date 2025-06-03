@@ -13,24 +13,18 @@ class HomePage extends GetView<HomeController> {
       appBar: AppBar(title: const Text('Users')),
       body: SafeArea(
         child: Obx(() {
-          if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (controller.message.value.isNotEmpty) {
+          if (controller.message.value.isNotEmpty) {
             return Center(child: Text(controller.message.value));
           } else {
             final users = controller.usersState;
             return NotificationListener(
               onNotification: (notification) {
                 if (notification is ScrollEndNotification &&
-                    notification.metrics.extentAfter == 0) {
-                  controller.fetchUser();
-                }
+                    notification.metrics.extentAfter == 0) {}
                 return false;
               },
               child: RefreshIndicator.adaptive(
-                onRefresh: () async {
-                  controller.fetchUser(refresh: true);
-                },
+                onRefresh: () async {},
                 child: ListView.builder(
                   key: const ValueKey('list_user'),
                   itemCount: users.length,
