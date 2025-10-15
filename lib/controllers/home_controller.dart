@@ -33,36 +33,34 @@ class HomeController extends GetxController {
 
     if (page == 1) {}
 
-    if (refresh && !loadMore) {
-      {
-        usersState.value = [];
-      }
+    if (refresh) {
+      usersState.value = [];
+    }
 
-      try {
-        final responseStr = await _assetLoader.loadString(
-          'assets/json/dummy_users_$page.json',
-        );
-        final responseJson = jsonDecode(responseStr) as Map<String, dynamic>;
+    try {
+      final responseStr = await _assetLoader.loadString(
+        'assets/json/dummy_users_$page.json',
+      );
+      final responseJson = jsonDecode(responseStr) as Map<String, dynamic>;
 
-        final data = responseJson['data'] as List<dynamic>;
-        final result = data.map((user) => UserModel.fromJson(user)).toList();
+      final data = responseJson['data'] as List<dynamic>;
+      final result = data.map((user) => UserModel.fromJson(user)).toList();
 
-        page = (data.length == page) ? null : (page ?? 1) + 1;
+      page = (data.length == page) ? null : (page ?? 1) + 1;
 
-        if (result.isEmpty) {
-          if (refresh) {
-            isLoading.value = false;
-            usersState.value = [];
-            return;
-          }
-          usersState.value = result;
-        } else {
-          refreshController.refreshCompleted();
-          usersState.assignAll([...usersState, ...result]);
+      if (result.isEmpty) {
+        if (refresh) {
+          isLoading.value = false;
+          usersState.value = [];
+          return;
         }
-      } catch (e) {
-        message.value = 'Failed to fetch users';
+        usersState.value = result;
+      } else {
+        refreshController.refreshCompleted();
+        usersState.assignAll([...usersState, ...result]);
       }
+    } catch (e) {
+      message.value = 'Failed to fetch users';
     }
   }
 }
