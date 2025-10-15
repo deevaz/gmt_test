@@ -2,7 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test_case/controllers/home_controller.dart';
+import 'package:flutter_test_case/pages/detail_user.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/state_manager.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -23,8 +26,12 @@ class HomePage extends GetView<HomeController> {
                     notification.metrics.extentAfter == 0) {}
                 return false;
               },
-              child: RefreshIndicator.adaptive(
-                onRefresh: () async {},
+              child: SmartRefresher(
+                controller: controller.refreshController,
+                onRefresh: () async {
+                  controller.fetchUser(refresh: true);
+                },
+                enablePullUp: true,
                 child: ListView.builder(
                   key: const ValueKey('list_user'),
                   itemCount: users.length,
@@ -34,14 +41,20 @@ class HomePage extends GetView<HomeController> {
                     }
 
                     final user = users[index];
-                    return ListTile(
-                      title: Text(user.firstName ?? ''),
-                      subtitle: Text(user.lastName ?? ''),
-                      leading: CircleAvatar(
-                        backgroundImage:
-                            Platform.environment.containsKey('FLUTTER_TEST')
-                                ? AssetImage('assets/images/dummy_avatar.png')
-                                : NetworkImage(user.avatar ?? ''),
+                    return InkWell(
+                      onTap: () => Get.to(DetailUser(), arguments: user),
+                      child: ListTile(
+                        title: Text(user.firstName ?? ''),
+                        subtitle: Text(user.lastName ?? ''),
+                        leading: CircleAvatar(
+                          backgroundImage:
+                              Platform.environment.containsKey('FLUTTER_TEST')
+                                  ? AssetImage('assets/images/dummy_avatar.png')
+                                  : NetworkImage(
+                                      user.avatar ??
+                                          'https://placehold.co/600x400.png',
+                                    ),
+                        ),
                       ),
                     );
                   },
